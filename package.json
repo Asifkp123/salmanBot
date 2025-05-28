@@ -1,0 +1,14 @@
+{
+  "name": "[project-name]",
+  "version": "1.0.0",
+  "description": "A project for handling webhook requests.",
+  "main": "api/webhook.js",
+  "scripts": {
+    "start": "node api/webhook.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

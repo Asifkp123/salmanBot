@@ -5,6 +5,8 @@ export default async function handler(req, res) {
   const webhookSecret = process.env.WEBHOOK_SECRET;
   const receivedSecret = req.headers['x-webhook-secret'];
   if (!webhookSecret || webhookSecret !== receivedSecret) {
+    console.log('Expected secret:', webhookSecret);
+    console.log('Received secret:', receivedSecret);
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -25,7 +27,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'API keys missing' });
   }
 
-  const client = Binance({
+  // Fix: Use Binance.default for ESM import
+  const client = Binance.default({
     apiKey,
     apiSecret,
   });
